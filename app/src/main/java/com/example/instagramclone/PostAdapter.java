@@ -20,6 +20,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
 
+    public void clear() {
+
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Post> list) {
+
+        posts.addAll(list);
+        notifyDataSetChanged();
+    }
+
+
+
     public PostAdapter(Context context, List<Post> posts) {
 
         this.context = context;
@@ -71,7 +85,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-
         return posts.size();
     }
 }
