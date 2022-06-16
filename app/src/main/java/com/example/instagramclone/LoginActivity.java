@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPassword;
     Button loginButton;
     ImageView ivLogo;
-    public static final String TAG = "LoginACtivity";
+    public static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,6 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser(username, password);
             }
         });
-
-
-
-
-
-
     }
 
     private void loginUser(String username, String password) {
@@ -62,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "Issue with login");
                 }
                 else {
-                goMainActivity();
+                goFeedActivity();
                 Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
             }}
@@ -70,8 +64,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void goMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void goFeedActivity() {
+        Intent intent = new Intent(this, FeedActivity.class);
         startActivity(intent);
 
     }

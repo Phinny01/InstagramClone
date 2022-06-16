@@ -6,5 +6,10 @@
     <string name="item">Item</string>
     <string name="todo">TODO</string>
     <string name="Logout">Logout</string>
+    <string name="caption">description</string>
+    <string name="Camera">Take a picture</string>
+    <string name="Submit">Post</string>
+    <string name="user">username</string>
+    <string name="description">description</string>
 
 </resources>
