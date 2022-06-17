@@ -21,6 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPassword;
     Button loginButton;
     ImageView ivLogo;
+    Button btCreate;
+    String message = "Success";
     public static final String TAG = "LoginActivity";
 
     @Override
@@ -32,6 +34,15 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.editTextTextPersonName);
         loginButton = findViewById(R.id.button);
         ivLogo = findViewById(R.id.imageView);
+        btCreate = findViewById(R.id.btCreate);
+
+        btCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goSignUp();
+
+            }
+        });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -46,27 +57,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String username, String password) {
-        Log.i(TAG, "Attempting to login user" + username);
 
-        ParseUser.logInInBackground(username,password, new LogInCallback() {
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                Log.d(TAG, "tttt"+ e);
-                if (e != null){
-                    Log.e(TAG, "Issue with login");
-                }
-                else {
-                goFeedActivity();
-                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
-            }}
+                if (e != null) {
+                    Log.e(TAG, "Issue with login");
+                } else {
+                    goMainActivity();
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
     }
 
-    private void goFeedActivity() {
-        Intent intent = new Intent(this, FeedActivity.class);
-        startActivity(intent);
+    private void goMainActivity() {
 
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void goSignUp() {
+
+        Intent intent = new Intent(this, SignUp.class);
+        startActivity(intent);
     }
 }
